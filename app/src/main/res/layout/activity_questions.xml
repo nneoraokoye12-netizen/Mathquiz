@@ -14,7 +14,7 @@
         android:fontFamily="@font/bubble"
         android:text="MathPath!"
         android:textSize="35dp"
-        android:layout_marginTop="540dp"
+        android:layout_marginTop="580dp"
         android:textStyle="bold|italic"
         android:translationX="-120dp"
         android:translationY="-470dp"
@@ -37,6 +37,18 @@
         android:text="What's 30 + 17?"
         android:translationY="-420dp"
         android:textSize="40dp" />
+
+    <Button
+        android:id="@+id/hintbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint= "#FFF380"
+        android:textColor="@color/black"
+        android:translationY="100dp"
+        android:translationX="130dp"
+        android:text="Hint?"
+        android:textSize="20dp"
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -85,7 +97,8 @@
             android:textColor="@color/black"
             android:backgroundTint="@color/white"
             android:text="20"
-            android:textSize="30dp" />
+            android:textSize="30dp"
+            />
 
     </LinearLayout>
 

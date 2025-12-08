@@ -17,15 +17,16 @@ import java.util.Random;
 public class Questions extends AppCompatActivity {
 
     private TextView tvQuestion, tvTitle;
-    private Button option1, option2, option3, option4;
+    private Button option1, option2, option3, option4, hintButton;
 
     private String difficulty;
     private int currentAnswer;
-    private int score = 0;
+    private double score = 0;
     private int questionNumber = 0;
     private final int totalQuestions = 5;
     private Random random = new Random();
     private boolean answerSelected = false;
+    private boolean hintUsed = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +51,7 @@ public class Questions extends AppCompatActivity {
         option2 = findViewById(R.id.option2);
         option3 = findViewById(R.id.option3);
         option4 = findViewById(R.id.option4);
+        hintButton = findViewById(R.id.hintbutton);
 
         // Update title to show difficulty
         if (tvTitle != null) {
@@ -84,6 +86,14 @@ public class Questions extends AppCompatActivity {
                 checkAnswer(option4);
             }
         });
+
+        // Hint button click listener
+        hintButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                useHint();
+            }
+        });
     }
 
     private void generateQuestion() {
@@ -94,9 +104,15 @@ public class Questions extends AppCompatActivity {
 
         questionNumber++;
         answerSelected = false;
+        hintUsed = false;
 
-        // Reset button colors
+        // Reset button colors and visibility
         resetButtonColors();
+        option1.setVisibility(View.VISIBLE);
+        option2.setVisibility(View.VISIBLE);
+        option3.setVisibility(View.VISIBLE);
+        option4.setVisibility(View.VISIBLE);
+        hintButton.setEnabled(true);
 
         switch (difficulty) {
             case "EASY":
@@ -224,6 +240,39 @@ public class Questions extends AppCompatActivity {
         option4.setText(String.valueOf(options.get(3)));
     }
 
+    private void useHint() {
+        if (hintUsed || answerSelected) {
+            return;
+        }
+
+        hintUsed = true;
+        hintButton.setEnabled(false);
+
+        // Find buttons with wrong answers
+        List<Button> wrongButtons = new ArrayList<>();
+
+        if (!option1.getText().toString().equals(String.valueOf(currentAnswer))) {
+            wrongButtons.add(option1);
+        }
+        if (!option2.getText().toString().equals(String.valueOf(currentAnswer))) {
+            wrongButtons.add(option2);
+        }
+        if (!option3.getText().toString().equals(String.valueOf(currentAnswer))) {
+            wrongButtons.add(option3);
+        }
+        if (!option4.getText().toString().equals(String.valueOf(currentAnswer))) {
+            wrongButtons.add(option4);
+        }
+
+        // Randomly remove 2 wrong answers
+        Collections.shuffle(wrongButtons);
+        for (int i = 0; i < 2 && i < wrongButtons.size(); i++) {
+            wrongButtons.get(i).setVisibility(View.INVISIBLE);
+        }
+
+        Toast.makeText(this, "Hint used! 2 wrong answers removed. (Worth 0.5 points)", Toast.LENGTH_SHORT).show();
+    }
+
     private void checkAnswer(Button selectedButton) {
         if (answerSelected) {
             return;
@@ -233,9 +282,14 @@ public class Questions extends AppCompatActivity {
         int selectedAnswer = Integer.parseInt(selectedButton.getText().toString());
 
         if (selectedAnswer == currentAnswer) {
-            score++;
+            if (hintUsed) {
+                score += 0.5;
+                Toast.makeText(this, "Correct! +0.5 points ✓", Toast.LENGTH_SHORT).show();
+            } else {
+                score += 1;
+                Toast.makeText(this, "Correct! +1 point ✓", Toast.LENGTH_SHORT).show();
+            }
             selectedButton.setBackgroundColor(Color.parseColor("#4CAF50")); // Green
-            Toast.makeText(this, "Correct! ✓", Toast.LENGTH_SHORT).show();
         } else {
             selectedButton.setBackgroundColor(Color.parseColor("#F44336")); // Red
             highlightCorrectAnswer();
@@ -274,13 +328,22 @@ public class Questions extends AppCompatActivity {
         new AlertDialog.Builder(this)
                 .setTitle("Quiz Complete!")
                 .setMessage("Your Score: " + score + "/" + totalQuestions + "\n\nDifficulty: " + difficulty)
-                .setPositiveButton("Back to Home", (dialog, which) -> {
+                .setPositiveButton("Email Score", (dialog, which) -> {
+                    // Go to email activity
+                    Intent intent = new Intent(Questions.this, Email.class);
+                    intent.putExtra("SCORE", score);
+                    intent.putExtra("TOTAL_QUESTIONS", totalQuestions);
+                    intent.putExtra("DIFFICULTY", difficulty);
+                    startActivity(intent);
                     finish();
                 })
                 .setNegativeButton("Try Again", (dialog, which) -> {
                     score = 0;
                     questionNumber = 0;
                     generateQuestion();
+                })
+                .setNeutralButton("Go Home", (dialog, which) -> {
+                    finish();
                 })
                 .setCancelable(false)
                 .show();

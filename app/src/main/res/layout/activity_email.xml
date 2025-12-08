@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#E8E4C9"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="110dp"
+        android:gravity="center"
+        android:text="Send Score to email?"
+        android:textSize="50dp"
+        android:translationY="-350dp"
+        android:textStyle="italic"
+/>
+
+    <EditText
+        android:id="@+id/typeName1"
+        android:gravity="center"
+        android:translationY="-250dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Email"
+        />
+
+    <Button
+        android:id="@+id/sendbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/black"
+        android:text="Send"
+        android:textSize="30dp"
+        android:translationY="-200dp" />
+
+    <Button
+        android:id="@+id/gohomebutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/black"
+        android:text="Go home"
+        android:textSize="30dp" />
+
+</LinearLayout>
