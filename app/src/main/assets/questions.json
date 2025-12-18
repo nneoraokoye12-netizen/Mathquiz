@@ -1,0 +1,204 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "difficulty": "easy",
+      "type": "addition",
+      "prompt": "What's 25 + 37?",
+      "answers": [
+        {
+          "response": "62",
+          "correct": true
+        },
+        {
+          "response": "61",
+          "correct": false
+        },
+        {
+          "response": "63",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "difficulty": "easy",
+      "type": "subtraction",
+      "prompt": "What's 48 - 19?",
+      "answers": [
+        {
+          "response": "29",
+          "correct": true
+        },
+        {
+          "response": "27",
+          "correct": false
+        },
+        {
+          "response": "31",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "difficulty": "medium",
+      "type": "multiplication",
+      "prompt": "What's 7 × 9?",
+      "answers": [
+        {
+          "response": "63",
+          "correct": true
+        },
+        {
+          "response": "56",
+          "correct": false
+        },
+        {
+          "response": "72",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "difficulty": "medium",
+      "type": "division",
+      "prompt": "What's 72 ÷ 8?",
+      "answers": [
+        {
+          "response": "9",
+          "correct": true
+        },
+        {
+          "response": "8",
+          "correct": false
+        },
+        {
+          "response": "10",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "difficulty": "medium",
+      "type": "addition",
+      "prompt": "What's 67 + 85?",
+      "answers": [
+        {
+          "response": "152",
+          "correct": true
+        },
+        {
+          "response": "151",
+          "correct": false
+        },
+        {
+          "response": "153",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "difficulty": "medium",
+      "type": "subtraction",
+      "prompt": "What's 94 - 38?",
+      "answers": [
+        {
+          "response": "56",
+          "correct": true
+        },
+        {
+          "response": "54",
+          "correct": false
+        },
+        {
+          "response": "58",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "difficulty": "hard",
+      "type": "square",
+      "prompt": "What's 15²?",
+      "answers": [
+        {
+          "response": "225",
+          "correct": true
+        },
+        {
+          "response": "215",
+          "correct": false
+        },
+        {
+          "response": "235",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "difficulty": "hard",
+      "type": "power",
+      "prompt": "What's 4^3?",
+      "answers": [
+        {
+          "response": "64",
+          "correct": true
+        },
+        {
+          "response": "54",
+          "correct": false
+        },
+        {
+          "response": "74",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "difficulty": "hard",
+      "type": "square_root",
+      "prompt": "What's √144?",
+      "answers": [
+        {
+          "response": "12",
+          "correct": true
+        },
+        {
+          "response": "11",
+          "correct": false
+        },
+        {
+          "response": "13",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "difficulty": "hard",
+      "type": "complex",
+      "prompt": "What's 8 × 5 + 6?",
+      "answers": [
+        {
+          "response": "46",
+          "correct": true
+        },
+        {
+          "response": "44",
+          "correct": false
+        },
+        {
+          "response": "48",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}
